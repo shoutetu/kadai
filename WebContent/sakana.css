@@ -1,0 +1,30 @@
+@CHARSET "UTF-8";
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;}
+body{line-height:1;min-width:1020px;font-family:"怨霊";
+align:center;}
+header{height:400px;width:800px;}
+tr{	width:10px;	height:70px;}
+p{font-size:30px;}
+h1{display: table;
+    margin: 5% auto 0;
+    text-transform: uppercase;
+    font-family: 'Anaheim', sans-serif;
+    font-size: 4em;
+    font-weight: 400;
+    text-shadow: 0 1px white, 0 2px black;}
+input,select{color:inherit;font:inherit;margin:0;vertical-align:middle;}
+
+.headr{
+	background-image:url(http://www.kawatomix.co.jp/totoya/img/topHeader.jpg);
+	background-repeat:no-repeat;
+}
+table{border-collapse:collapse;border-spacing:0;align:center;}
+h1{
+    display: table;
+    margin: 5% auto 0;
+    text-transform: uppercase;
+    font-family: 'Anaheim', sans-serif;
+    font-size: 4em;
+    font-weight: 400;
+    text-shadow: 0 1px white, 0 2px black;
+}
