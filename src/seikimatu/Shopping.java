@@ -18,8 +18,6 @@ public class Shopping {
 				sdao.close();
 			}
 		}
-
-
 		return alib;
 
 	}
@@ -52,5 +50,32 @@ public class Shopping {
 		}
 		return AH;
 
+	}
+	public ArrayList<itemBean> itemSerch(String price1,String price2)throws Exception{
+		ArrayList<itemBean> ab = new ArrayList<itemBean>();
+		ShoppingDao dao = new ShoppingDao();
+		try{
+			ab=dao.itemSerch(price1, price2);
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			if(dao != null){
+				dao.close();
+			}
+		}
+		return ab;
+	}
+	public itemBean AdditemQuantity(int quantity,String itemid)throws Exception{
+		itemBean bean= new itemBean();
+		ShoppingDao dao = new ShoppingDao();
+		try{
+			bean= dao.AdditemQuantity(quantity, itemid);
+		}catch(SQLException e){
+			e.printStackTrace();
+		}finally{
+			if(dao != null){
+				dao.close();
+			}
+		}return bean;
 	}
 }

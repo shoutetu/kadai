@@ -48,6 +48,29 @@ public LoginUserBean selectuser(String id,String pass)throws SQLException {
 	}
 	return LB;
 }
+public LoginUserBean usingCheck(String id,String pass,String name)throws SQLException{
+	PreparedStatement pstatement = null;
+	LoginUserBean bean = new LoginUserBean();
+	try{
+		String sql="select id,pass,name from user where id =? and pass=? and name= ?";
+		pstatement = connection.prepareStatement(sql);
+
+		pstatement.setString(1, id);
+		pstatement.setString(2, pass);
+		pstatement.setString(3, name);
+		ResultSet rs = null;
+		rs = pstatement.executeQuery();
+		while(rs.next()){
+			bean.setUserId(rs.getString("id"));
+			bean.setPassword(rs.getString("pass"));
+			bean.setName(rs.getString("name"));
+		}
+		rs.close();
+	}finally{
+		pstatement.close();
+	}
+	return bean;
+}
 public void touroku(String id,String pass,String name,int age)throws SQLException {
 	PreparedStatement pstatement= null;
 	try{
@@ -60,10 +83,12 @@ public void touroku(String id,String pass,String name,int age)throws SQLExceptio
 		pstatement.setInt(4, age);
 		pstatement.executeUpdate();
 
+	}catch(SQLException e){
+		return;
 
 	}finally{
 		pstatement.close();
 	}
-
 }
+
 }

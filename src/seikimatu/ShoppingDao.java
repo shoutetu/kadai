@@ -66,7 +66,7 @@ public itemBean selectitem(String item_id)throws SQLException{
 			ib.setItemid(rs.getString("item.item_id"));
 			ib.setItemname(rs.getString("item.item_name"));
 			ib.setItemprice(rs.getInt("item.price"));
-			ib.setItemQuantity(rs.getInt("stok.quantity"));
+			ib.setItemQuantity(rs.getInt("quantity"));
 		}
 		rs.close();
 	}finally{
@@ -74,14 +74,14 @@ public itemBean selectitem(String item_id)throws SQLException{
 	}
 	return ib;
 		}
-public ArrayList<HistoryBean> getHistory(String id)throws SQLException{
+public ArrayList<HistoryBean> getHistory(String itemId)throws SQLException{
 	ArrayList<HistoryBean> AH =null;
 	PreparedStatement pstatement =null;
 	ResultSet rs =null;
 	try{
 		String sql ="select a.item_id, b.item_name, a.quantity from history a , item b where a.id = ? and a.item_id = b.item_id";
 		pstatement =connection.prepareStatement(sql);
-		pstatement.setString(1, id);
+		pstatement.setString(1, itemId);
 		rs = pstatement.executeQuery();
 		AH = new ArrayList<HistoryBean>();
 
@@ -126,5 +126,45 @@ public void updateHistory(String id,String item_id,int quantity)throws SQLExcept
 }finally{
 	pstatement.close();
 }
+}
+public ArrayList<itemBean> itemSerch(String price1,String price2)throws SQLException{
+	PreparedStatement pstatement=null;
+	ArrayList<itemBean> ab = new ArrayList<itemBean>();
+	ResultSet rs = null;
+	try{
+		String sql="select * from item join stok on item.item_id=stok.item_id where price between ? and ?";
+		pstatement= connection.prepareStatement(sql);
+		pstatement.setString(1, price1);
+		pstatement.setString(2, price2);
+		rs =pstatement.executeQuery();
+
+		while(rs.next()){
+			itemBean bean = new itemBean();
+			bean.setItemid(rs.getString("item_id"));
+			bean.setItemname(rs.getString("item_name"));
+			bean.setItemprice(rs.getInt("price"));
+			bean.setItemQuantity(rs.getInt("quantity"));
+		ab.add(bean);
+		}
+		rs.close();
+	}finally{
+		pstatement.close();
+	}
+	return ab;
+}
+public itemBean AdditemQuantity(int quantity,String itemid)throws SQLException{
+	PreparedStatement pstatement = null;
+	itemBean bean = new itemBean();
+	try{
+		String sql="update stok set quantity= quantity + ? where item_id=?";
+		pstatement=connection.prepareStatement(sql);
+		pstatement.setInt(1, quantity);
+		pstatement.setString(2, itemid);
+		pstatement.executeUpdate();
+
+	}catch(SQLException e){
+		e.printStackTrace();
+	}
+	return bean;
 }
 }

@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
     <%@page import="seikimatu.LoginUserBean" %>
     <%@page import="java.util.ArrayList"%>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -14,9 +13,7 @@ th{background-color:#ffff00;}
 .message{color:#800000;}</style>
 <title>ショッピングサイトへようこそ！</title>
 </head>
-<body style="background-image:url(img/umi.jpg);
-background-repeat:no-repeat;
-image-size:fd" >
+<body>
 <h1>ログインページ</h1>
 <form action="LoginServlet" method="post">
 <p>ログイン情報を入力してください</p>

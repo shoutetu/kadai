@@ -1,29 +1,54 @@
 @CHARSET "UTF-8";
-html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;}
-body{line-height:1;min-width:1020px;font-family:"怨霊";
-align:center;}
-header{height:400px;width:800px;}
+html{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;}
+body{background-image:url(https://image.freepik.com/free-vector/no-translate-detected_660230.jpg);
+background-repeat:no-repeat;
+font-family:"GN-キルゴUかなNA";margin-right:10px;margin-left:10px;
+background-size:cover;
+background-collapse:collapse;}
 tr{	width:10px;	height:70px;}
 p{font-size:30px;}
+
 h1{display: table;
     margin: 5% auto 0;
     text-transform: uppercase;
-    font-family: 'Anaheim', sans-serif;
     font-size: 4em;
     font-weight: 400;
     text-shadow: 0 1px white, 0 2px black;}
 input,select{color:inherit;font:inherit;margin:0;vertical-align:middle;}
-
-.headr{
-	background-image:url(http://www.kawatomix.co.jp/totoya/img/topHeader.jpg);
-	background-repeat:no-repeat;
+td{font-weight: bold;
+font-size:large;
+border-right: 1px solid #ccc;
+border-bottom: 1px solid #ccc;
+border-top: 1px solid #fff;
+border-left: 1px solid #fff;
+border-collapse:collapse
+background-color:white;;
 }
-table{border-collapse:collapse;border-spacing:0;align:center;}
-h1{
+th{
+	text-align:center;
+	text-size:large;
+	text-collapse:collapse
+}
+tr{
+	text-align:center;
+	text-collapse:collapse
+}
+table{ animation-duration:3s;border-collapse:collapse;border-spacing:0;magin-left:50px;
+background-color:white;}
+.btn1{
+	margin-left:60%;
+	padding:10%;
+}
+.item{
+	font-size:large;
+	text-align:center;
+	width:800px;
+	height:600px;
+}
+h1{text-align:center;
     display: table;
     margin: 5% auto 0;
     text-transform: uppercase;
-    font-family: 'Anaheim', sans-serif;
     font-size: 4em;
     font-weight: 400;
     text-shadow: 0 1px white, 0 2px black;
