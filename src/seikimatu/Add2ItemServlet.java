@@ -37,7 +37,7 @@ public class Add2ItemServlet extends HttpServlet {
 		Shopping shopping= new Shopping();
 		int AddCount= Integer.parseInt(addCount);
 
-		if(add.equals("追加")){
+		if(add.equals("補充")){
 		itemBean ib = shopping.getitem(itemid);
 		itemBean bean= shopping.AdditemQuantity(AddCount,itemid);
 		request.setAttribute("itemList", ib);

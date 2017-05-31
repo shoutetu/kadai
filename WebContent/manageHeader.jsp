@@ -14,7 +14,7 @@
 <jsp:useBean id="user_db" scope="session" class="seikimatu.LoginUserBean" />
 </head>
 <header class=headr>
-<h1><span><img src="http://latale.wikiwiki.jp/?plugin=ref&page=Monster%2F%A5%B5%A5%D0%A5%F3%A5%CA&src=Monster_05_02.gif"></span>サバンナ！！<span><img src="http://latale.wikiwiki.jp/?plugin=ref&page=Monster%2F%A5%B5%A5%D0%A5%F3%A5%CA&src=Monster_04_01.gif"></span></h1>
+<h1>サバンナ！！</h1>
 <h3>ようこそ「<jsp:getProperty property="name" name="user_db" />」さん！<span id="RealtimeClockArea"></span></h3>
 <script type="text/javascript">
 function showClock1() {
@@ -27,9 +27,8 @@ function showClock1() {
 }
 setInterval('showClock1()',1000);
 </script>
-</header>
 <body>
-	<nav class="navbar navbar-default" style="color:black;">
+<nav class="navbar navbar-default">
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed"
@@ -44,14 +43,14 @@ setInterval('showClock1()',1000);
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="http://localhost:8080/seikimatu/Login.jsp">TOPへ <span class="sr-only">(current)</span></a></li>
+					<li class="active"><a href="http://localhost:8080/seikimatu/ManagerManage.jsp">ホーム <span class="sr-only">(current)</span></a></li>
 				</ul>
-				<form action="ShoppingServlet" method="post">
+				<form action="ManageServlet" method="post">
 					<div style="padding-top: 10px; text-align: center;">
-						<input type="text" name="inputPrice1" value="" />円から
-						<input type="text" name="inputPrice2" value="" />円までの商品
-						<input type="submit" name="serch" value="検索" />
-						<input type="submit" name="sort" value="並び替え（昇順）" />
+						<input type="text" name="inputAge1" value="" />歳から
+						<input type="text" name="inputAge2" value="" />歳までのユーザー
+						<input type="submit" name="search" value="検索" />
+						<input type="submit" name="reset" value="元に戻す" />
 					</div>
 				</form>
 
@@ -59,4 +58,5 @@ setInterval('showClock1()',1000);
 		</div>
 	</nav>
 	</body>
-	</html>
+</header>
+</html>

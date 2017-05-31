@@ -74,18 +74,18 @@ public itemBean selectitem(String item_id)throws SQLException{
 	}
 	return ib;
 		}
-public ArrayList<HistoryBean> getHistory(String itemId)throws SQLException{
+public ArrayList<HistoryBean> getHistory(String userId)throws SQLException{
 	ArrayList<HistoryBean> AH =null;
 	PreparedStatement pstatement =null;
 	ResultSet rs =null;
 	try{
 		String sql ="select a.item_id, b.item_name, a.quantity from history a , item b where a.id = ? and a.item_id = b.item_id";
 		pstatement =connection.prepareStatement(sql);
-		pstatement.setString(1, itemId);
+		pstatement.setString(1, userId);
 		rs = pstatement.executeQuery();
 		AH = new ArrayList<HistoryBean>();
 
-		if(rs.next()){
+		while(rs.next()){
 			HistoryBean iB=new HistoryBean();
 			iB.setItemid(rs.getString("a.item_id"));
 			iB.setItemName(rs.getString("b.item_name"));
@@ -166,5 +166,52 @@ public itemBean AdditemQuantity(int quantity,String itemid)throws SQLException{
 		e.printStackTrace();
 	}
 	return bean;
+}
+public ArrayList<itemBean> sort()throws SQLException{
+	PreparedStatement pstatement = null;
+	ArrayList<itemBean> ai = new ArrayList<itemBean>();
+	ResultSet rs;
+	try{
+		String sql="select item.item_id,item.item_name, item.price ,stok.quantity from item join stok on item.item_id=stok.item_id order by price";
+		pstatement=connection.prepareStatement(sql);
+		rs=pstatement.executeQuery();
+
+		while(rs.next()){
+			itemBean bean = new itemBean();
+			bean.setItemid(rs.getString("item_id"));
+			bean.setItemname(rs.getString("item_name"));
+			bean.setItemprice(rs.getInt("price"));
+			bean.setItemQuantity(rs.getInt("quantity"));
+			ai.add(bean);
+		}
+		rs.close();
+
+	}finally{
+		pstatement.close();
+	}
+	return ai;
+}
+public int totalPrice(String itemid)throws SQLException{
+	PreparedStatement pstatement = null;
+	int price=0;
+	ResultSet rs;
+	try{
+		String sql="select price from item where item_id =?";
+		pstatement =connection.prepareStatement(sql);
+		pstatement.setString(1, itemid);
+		rs=pstatement.executeQuery();
+
+		while(rs.next()){
+		itemBean bean = new itemBean();
+		bean.setItemprice(rs.getInt("price"));
+		price =bean.getItemprice();
+		}
+		rs.close();
+
+	}finally{
+		pstatement.close();
+	}
+	return price;
+
 }
 }

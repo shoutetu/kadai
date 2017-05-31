@@ -32,19 +32,24 @@ public class BuyItemServlet extends HttpServlet {
 		String itemid ="";
 		String buyCount = "";
 		String buy;
+		int totalPrice=0;
 		try{
 
 		Shopping shopping= new Shopping();
 		itemid =request.getParameter("itemId");
 		buyCount = request.getParameter("buyCount");
-		//buyCount =request.getParameter(itemid);
 		System.out.print("itemid :"+ itemid);
 		buy =request.getParameter("btn");
 
 		if(buy.equals("購入")){
 		itemBean ib = shopping.getitem(itemid);
+		ShoppingDao dao = new ShoppingDao();
+		int total =dao.totalPrice(itemid);
+		int buyNum = Integer.parseInt(buyCount);
+		totalPrice = buyNum * total;
 		request.setAttribute("itemList", ib);
 		request.setAttribute("buyCount", buyCount);
+		request.setAttribute("totalPrice", totalPrice);
 		RequestDispatcher rd=request.getRequestDispatcher("/confirm.jsp");
 		rd.forward(request, response);
 		}

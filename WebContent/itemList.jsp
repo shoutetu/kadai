@@ -17,7 +17,7 @@ th {
 </head>
 <body>
 	<jsp:include page="header.jsp" />
-		<table class="item">
+		<table class="item" align="center" border="2">
 			<tbody>
 				<tr style="text-align:center;">
 					<th>商品ID</th>
@@ -44,7 +44,7 @@ th {
 					%>
 					<td><select name="buyCount">
 							<%
-								for (int i = 0; i <= bean.getItemQuantity(); i++) {
+								for (int i = 1; i <= bean.getItemQuantity(); i++) {
 							%>
 							<option value=<%=i%>><%=i%></option>
 							<%
@@ -69,5 +69,6 @@ th {
 
 			</tbody>
 		</table>
+		<jsp:include page="footer.jsp" />
 </body>
 </html>

@@ -33,12 +33,10 @@ public class ShoppingServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
-		System.out.println("ShoppingServlet doGET!!!");
 		String id = ((LoginUserBean) session.getAttribute("user_db")).getUserId();
 		try {
-				ShoppingDao dao = new ShoppingDao();
-				ArrayList<HistoryBean> ai = dao.getHistory(id);
-				System.out.println(ai);
+				Shopping shopping = new Shopping();
+				ArrayList<HistoryBean> ai = shopping.getHistory(id);
 				if (ai != null) {
 					ServletContext context = request.getServletContext();
 					RequestDispatcher rd;
@@ -60,6 +58,7 @@ public class ShoppingServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String serch = request.getParameter("serch");
+		String sort = request.getParameter("sort");
 
 		try {
 			Shopping shopping = new Shopping();
@@ -77,9 +76,19 @@ public class ShoppingServlet extends HttpServlet {
 				System.out.println(price2);
 				ShoppingDao dao = new ShoppingDao();
 				ArrayList<itemBean> ab = dao.itemSerch(price1, price2);
+
 				if (ab != null) {
 					context = request.getServletContext();
 					request.setAttribute("itemBeanList", ab);
+					rd = context.getRequestDispatcher("/itemList.jsp");
+					rd.forward(request, response);
+				}
+			}else if(sort != null && sort.equals("並び替え（昇順）")){
+				ShoppingDao dao = new ShoppingDao();
+				ArrayList<itemBean> alib = dao.sort();
+				if(alib != null){
+					context = request.getServletContext();
+					request.setAttribute("itemBeanList", alib);
 					rd = context.getRequestDispatcher("/itemList.jsp");
 					rd.forward(request, response);
 				}

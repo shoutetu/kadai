@@ -8,8 +8,8 @@
 
 </head>
 <body>
-<jsp:include page="header.jsp" />
 <h1>失敗</h1>
 <a href="http://localhost:8080/seikimatu/Login.jsp" >TOPに戻る</a>
+<jsp:include page="footer.jsp" />
 </body>
 </html>

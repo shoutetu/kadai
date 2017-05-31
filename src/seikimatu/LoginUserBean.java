@@ -6,7 +6,21 @@ public class LoginUserBean implements Serializable{
 	private String userId;
 	private String password;
 	private String name;
+	private int age;
+	private String address;
 
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
 	public String getUserId() {
 		return userId;
 	}

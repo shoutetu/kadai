@@ -7,14 +7,14 @@
 <head>
  <link rel='stylesheet'  href='sakana.css' type='text/css' media='all'>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>購入確認画面</title>
 </head>
 <body>
 <jsp:include page="header.jsp"/>
- <h1>追加確認</h1>
-    <p>次の商品を追加しますか？</p>
+ <h1>補充確認</h1>
+    <p>次の商品を補充しますか？</p>
     <form action="AddResultServlet" method="post">
-        <table>
+        <table align="center">
             <tbody>
                 <tr>
                     <th>商品ID</th>
@@ -22,6 +22,7 @@
                     <th>価格</th>
                     <th>在庫数</th>
                     <th>追加数</th>
+                    <th></th>
                 </tr>
                 <tr>
                     <td><%=bean.getItemid() %></td>
@@ -30,7 +31,7 @@
                     <td><%=bean.getItemQuantity() %></td>
                     <td class="int"><%=request.getAttribute("addCount")%></td>
                     <td>
-                        <input type="submit" name="add" value="追加する" >
+                        <input type="submit" name="add" value="補充する" >
  						<input type="hidden" name="item_id" value="<%=bean.getItemid() %>">
  						<input type="hidden" name="quantity" value="<%= request.getAttribute("addCount") %>" >
                     </td>

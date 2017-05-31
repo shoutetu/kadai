@@ -3,15 +3,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
- <link rel='stylesheet'  href='sakana.css' type='text/css' media='all'>
+<jsp:include page="header2.jsp" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>追加完了</title>
+<title>ユーザー情報の変更完了</title>
 </head>
 <body>
-<jsp:include page="header.jsp" />
-<h1>補充しました。</h1>
-<form action="ManagerServlet" method="get">
- <input type="submit" value="一覧に戻る">
-</form>
+<h1>ユーザー情報の変更完了！</h1>
+<h2><%=request.getAttribute("new") %>に変更されました！</h2>
+<jsp:include page="footer.jsp" />
 </body>
 </html>

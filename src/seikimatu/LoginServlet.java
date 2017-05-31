@@ -74,7 +74,7 @@ public class LoginServlet extends HttpServlet {
 					session = request.getSession();
 					session.setAttribute("user_db", bean);
 					session.setAttribute("login_db", lo);
-					rd = context.getRequestDispatcher("/ManagerServlet");
+					rd = context.getRequestDispatcher("/ManagerManage.jsp");
 					rd.forward(request, response);
 
 				} else if (bean != null) {
@@ -94,11 +94,10 @@ public class LoginServlet extends HttpServlet {
 					rd.forward(request, response);
 
 				}
+
 			} else if (login != null && login.equals("新規登録")) {
 				context = request.getServletContext();
 				session.setAttribute("message1", "");
-				session.setAttribute("message2", "");
-				session.setAttribute("message3", "");
 				rd = context.getRequestDispatcher("/Touroku.jsp");
 				rd.forward(request, response);
 			} else if (Tr != null && Tr.equals("登録")) {
@@ -106,48 +105,36 @@ public class LoginServlet extends HttpServlet {
 				String new_pass = request.getParameter("new_pass");
 				String new_name = request.getParameter("new_name");
 				String age = request.getParameter("new_age");
+				String new_address = request.getParameter("new_address");
 				int new_age = Integer.parseInt(age);
 				LoginDao ld = new LoginDao();
 				bean = ld.usingCheck(new_id, new_pass, new_name);
 
 				// IDが使用済みの場合
-				if (bean.getUserId() == null && bean.getUserId() == new_id) {
-					session.setAttribute("message1", "そのIDはすでに使用されています。");
-					context = request.getServletContext();
-					rd = context.getRequestDispatcher("/Touroku.jsp");
-					rd.forward(request, response);
-				}
-				// passが使用済みの場合
-				if (bean.getPassword() == null && new_pass == bean.getPassword()) {
-					session.setAttribute("message2", "そのpassはすでに使用されています。");
-					context = request.getServletContext();
-					rd = context.getRequestDispatcher("/Touroku.jsp");
-					rd.forward(request, response);
-				}
-				// 名前が使用済みの場合
-				if (bean.getName() == null && new_name == bean.getName()) {
-					session.setAttribute("message3", "その名前はすでに使用されています。");
+				if (new_id != null && bean.getUserId()==new_id) {
+					session.setAttribute("message", "そのIDはすでに使用されています。");
 					context = request.getServletContext();
 					rd = context.getRequestDispatcher("/Touroku.jsp");
 					rd.forward(request, response);
 				}
 
 				// 全部使われていなかったら
-				else if (!new_id.equals(bean.getUserId()) && !new_pass.equals(bean.getPassword())
-						&& !new_name.equals(bean.getName())) {
-					ld.touroku(new_id, new_pass, new_name, new_age);
+				else {
+					ld.touroku(new_id, new_pass, new_name, new_age,new_address);
+					request.setAttribute("new_id", new_id);
+					request.setAttribute("new_pass", new_pass);
+					request.setAttribute("new_name", new_name);
+					request.setAttribute("new_age", new_age);
+					request.setAttribute("new_address", new_address);
 					context = request.getServletContext();
-					session = request.getSession();
-					session.setAttribute("user_db", new_id);
-					rd = context.getRequestDispatcher("/Login.jsp");
+					rd = context.getRequestDispatcher("/TourokuOK.jsp");
 					rd.forward(request, response);
 				}
-			}
 
-		} catch (Exception e) {
+				}
+		}catch (Exception e) {
 			e.printStackTrace();
 
 		}
-
-	}
+}
 }

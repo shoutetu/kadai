@@ -14,19 +14,20 @@ th{background-color:#ffff00;}
 <title>ショッピングサイトへようこそ！</title>
 </head>
 <body>
-<h1>ログインページ</h1>
+<h1 class="title">サバンナ！！</h1>
+<h1 align="center"><span><img src="http://latale.wikiwiki.jp/?plugin=ref&page=Monster%2F%A5%B5%A5%D0%A5%F3%A5%CA&src=Monster_05_02.gif"></span>ログインページ<span><img src="http://latale.wikiwiki.jp/?plugin=ref&page=Monster%2F%A5%B5%A5%D0%A5%F3%A5%CA&src=Monster_05_02.gif"></span></h1>
 <form action="LoginServlet" method="post">
-<p>ログイン情報を入力してください</p>
+<h3 style="color:red">ログイン情報を入力してください</h3>
 <table class="1" border="1">
-<tr><td>ログインID :<input type="text" name="userId" value=""/></td></tr>
-<tr><td>password :<input type="text" name="password" value="" /></td></tr>
+<tr><td>ログインID :<input type="text" name="userId" maxlength='5' placeholder='名前を入力' value=""/></td></tr>
+<tr><td>password :<input type="text" name="password" maxlength='10'placeholder='パスワードを入力' value="" /></td></tr>
 </table>
 <p><input type="submit" name="btn" value="ログイン" /></p>
 </form>
 <form action ="LoginServlet" method="post">
 <p><input type="submit" name="btn" value="新規登録" /></p>
 </form>
-
+<img src="http://latale.wikiwiki.jp/?plugin=ref&page=Monster%2F%A5%B5%A5%D0%A5%F3%A5%CA&src=Monster_05_02.gif">
 <%if("Login".equals(session.getAttribute("login_db"))){ %>
 <form action="LoginServlet" method="get">
 <p><input type="submit" value="ログアウト" /></p>

@@ -12,17 +12,18 @@
 <body>
 <jsp:include page="header.jsp"/>
  <h1>購入確認</h1>
-    <p>次の商品を購入しますか？</p>
+    <p style="color:blue">次の商品を購入しますか？</p>
 
     <form action="ResultServlet" method="post">
-        <table>
+        <table align="center">
             <tbody>
-                <tr>
+                <tr style="background-color:pink">
                     <th>商品ID</th>
                     <th>商品名</th>
                     <th>価格</th>
                     <th>在庫数</th>
                     <th>購入数</th>
+                    <th></th>
                 </tr>
                 <tr>
                     <td><%=bean.getItemid() %></td>
@@ -37,10 +38,12 @@
                     </td>
                 </tr>
             </tbody>
-        </table>
+            <h2 align="center">合計金額：<%=request.getAttribute("totalPrice") %>円です！</h2>
+         </table>
     </form>
     <form action="ShoppingServlet" method="post">
         <input type="submit" value="一覧に戻る">
     </form>
+    <jsp:include page="footer.jsp" />
 </body>
 </html>

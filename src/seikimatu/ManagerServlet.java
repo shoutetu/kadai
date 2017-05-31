@@ -71,7 +71,7 @@ public class ManagerServlet extends HttpServlet {
 				request.setAttribute("itemBeanList", ai);
 				rd = context.getRequestDispatcher("/manager.jsp");
 				rd.forward(request, response);
-			} else if (btn.equals("追加")) {
+			} else if (btn.equals("補充")) {
 				String id = request.getParameter("itemId");
 				context = request.getServletContext();
 				request.setAttribute("itemId", id);

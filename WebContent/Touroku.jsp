@@ -13,22 +13,23 @@
 <form action="LoginServlet" method="post">
 <table border="2" align="left">
 <tr>
-<td>新たに登録するID</td>
-<td><input type="text" name="new_id" value="" /></td></tr>
+<td>登録するID</td>
+<td><input type="text" name="new_id" maxlength='5'  value="" /></td></tr>
 <tr>
-<td>新たに登録するPASS</td>
-<td><input type="text" name="new_pass" value="" /></td></tr>
+<td>登録するPASS</td>
+<td><input type="text" name="new_pass" maxlength='10' value="" /></td></tr>
 <tr>
-<td>新たに登録する名前</td>
+<td>登録する名前</td>
 <td><input type="text" name="new_name" value="" /></td></tr>
 <tr>
-<td>新たに登録する年齢</td>
+<td>登録する年齢</td>
 <td><input type="text" name="new_age" value="" /></td></tr>
+<tr>
+<td>登録する住所</td>
+<td><input type="text" name="new_address" value="" /></td></tr>
 </table>
 <table>
-<tr><td><%=session.getAttribute("message1") %></td></tr>
-<tr><td><%=session.getAttribute("message2") %></td></tr>
-<tr><td><%=session.getAttribute("message3") %></td></tr>
+<tr><td><%=session.getAttribute("message") %></td></tr>
 </table>
 <div class="btn1">
 <table class="btn1">

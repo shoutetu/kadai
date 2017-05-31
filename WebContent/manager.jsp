@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
     <%@ page import="java.util.ArrayList"%>
     <%@page import="seikimatu.itemBean" %>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -12,10 +11,10 @@
 </head>
 <body>
 <jsp:include page="header.jsp"/>
-<h1>商品在庫を補充する。</h1>
-<table class="item">
+<h1>商品一覧</h1>
+<table class="item" align="center">
 			<tbody>
-				<tr style="text-align:center;">
+				<tr style="text-align:center;background-color:pink">
 					<th>商品ID</th>
 					<th>商品名</th>
 					<th>価格</th>
@@ -49,7 +48,7 @@
 					</select></td>
 					<td>
 					<input type="hidden" name="itemId"value="<%=bean.getItemid()%>" />
-					<input type="submit" name="btn" value="追加" /></td></tr>
+					<input type="submit" name="btn" value="補充" /></td></tr>
 					</form>
 					<%
 						}else {
@@ -65,5 +64,6 @@
 
 			</tbody>
 		</table>
+		<jsp:include page="footer.jsp" />
 </body>
 </html>
